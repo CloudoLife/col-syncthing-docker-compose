@@ -8,13 +8,13 @@ git clone git@github.com:CloudoLife/col-syncthing-docker-compose.git
 
 cd col-syncthing-docker-compose
 
-cp .env.example .env
-
 # Run Syncthing
 docker-compose up
 ```
 
 ## Configuration
+
+### Docker Compose Configuration
 
 ```yaml
 # docker-compose.yaml
@@ -34,6 +34,8 @@ services:
     volumes:
       - "./runtime/syncthing/var/syncthing:/var/syncthing"
 ```
+
+### Environment Variable Configuration
 
 ```ini
 # .env
@@ -65,5 +67,49 @@ docker-compose up
 Stop Syncthing.
 
 ```shell
+docker-compose stop
+```
+
+Down Syncthing.
+
+```shell
 docker-compose down
 ```
+
+## Advanced Usages
+
+See [docker-compose.override.yaml.exmaple](./docker-compose.override.yaml.exmaple) to learn more.
+### Mount Host dir
+
+```yaml
+# docker-compose.yaml
+
+    volumes:
+      - "/:/Docker_Host/"
+```
+
+### Use custom network
+
+```shell
+docker network create -d bridge bridge-local
+```
+
+```yaml
+# docker-compose.yaml
+
+# docker network create -d bridge bridge-local
+networks:
+  default:
+    name: bridge-local
+    external: true
+```
+
+## References
+
+[1] [syncthing/syncthing - Docker Image | Docker Hub - https://hub.docker.com/r/syncthing/syncthing](https://hub.docker.com/r/syncthing/syncthing)
+
+[2] [Syncthing - https://syncthing.net/](https://syncthing.net/)
+
+[3] [Overview | Docker Documentation - https://docs.docker.com/compose/](https://docs.docker.com/compose/)
+
+[4] [Home - Docker - https://www.docker.com/](https://www.docker.com/)

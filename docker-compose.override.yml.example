@@ -5,8 +5,9 @@ services:
   syncthing:
     volumes:
       - "/:/Docker_Host/"
-
-networks:
-  default:
-    name: bridge-local
-    external: true
+      
+# # docker network create -d bridge bridge-local
+# networks:
+#   default:
+#     name: bridge-local
+#     external: true
