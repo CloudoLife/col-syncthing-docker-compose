@@ -1,0 +1,14 @@
+version: '3'
+
+services:
+
+  syncthing:
+    image: syncthing/syncthing
+    # privileged: true
+    restart: always
+    ports:
+      - "${LISTENER_IP}:${GUI_PORT}:8384"
+      - "${SYNC_PORT}:22000"
+      - "${DISCOVERY_PORT}:21027/udp"
+    volumes:
+      - "./runtime/syncthing/var/syncthing:/var/syncthing"

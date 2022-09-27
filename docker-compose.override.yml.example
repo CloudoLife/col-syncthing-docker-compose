@@ -1,0 +1,12 @@
+version: '3'
+
+services:
+
+  syncthing:
+    volumes:
+      - "/:/Docker_Host/"
+
+networks:
+  default:
+    name: bridge-local
+    external: true
